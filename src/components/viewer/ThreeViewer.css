@@ -1,0 +1,61 @@
+.three-viewer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.three-viewer__canvas-wrap {
+  flex: 1;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 70%
+  );
+}
+
+.three-viewer__hint {
+  text-align: center;
+  padding: var(--space-sm) 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+@media (max-width: 768px) {
+  .three-viewer {
+    min-height: 300px;
+  }
+}
+
+.three-viewer__env-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.three-viewer__env-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.three-viewer__canvas-wrap--env {
+  background-size: cover;
+  background-position: center;
+}

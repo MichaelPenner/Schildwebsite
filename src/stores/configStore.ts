@@ -40,6 +40,12 @@ function createDefaultConfig(productType: ProductType): ProductConfiguration {
   const fontsData = getActiveFonts();
   const defaultFont = fontsData[0];
 
+  const baseColorId = productType === 'keychain' ? 'col-pla-gold' : 'col-pla-white';
+  const textColorId = productType === 'keychain' ? 'col-pla-white' : 'col-pla-gold';
+
+  const defaultBaseColor = defaultColors.find((c) => c.id === baseColorId) || defaultColor;
+  const defaultTextColor = defaultColors.find((c) => c.id === textColorId) || defaultColor;
+
   const layers: TextLayerConfig[] = [
     {
       id: generateId(),
@@ -47,7 +53,7 @@ function createDefaultConfig(productType: ProductType): ProductConfiguration {
       fontSize: productType === 'mailbox-sign' ? 14 : 10,
       alignment: 'center',
       letterSpacing: 0.5,
-      colorId: defaultColors.find((c) => c.name === 'Weiß')?.id ?? defaultColor.id,
+      colorId: defaultTextColor.id,
     },
   ];
 
@@ -58,10 +64,7 @@ function createDefaultConfig(productType: ProductType): ProductConfiguration {
       fontSize: 8,
       alignment: 'center',
       letterSpacing: 1,
-      colorId:
-        defaultColors.find((c) => c.name === 'Gold')?.id ??
-        defaultColors.find((c) => c.name === 'Weiß')?.id ??
-        defaultColor.id,
+      colorId: defaultTextColor.id,
     });
   }
 
@@ -74,10 +77,10 @@ function createDefaultConfig(productType: ProductType): ProductConfiguration {
     depth: product?.defaultDepth ?? 3,
     textLayers: layers,
     materialId: defaultMaterial.id,
-    baseColorId: defaultColor.id,
+    baseColorId: defaultBaseColor.id,
     fontId: defaultFont.id,
-    qrEnabled: false,
-    qrUrl: '',
+    qrEnabled: productType === 'keychain',
+    qrUrl: productType === 'keychain' ? 'https://schildwerk.de' : '',
     nfcEnabled: false,
     nfcUrl: '',
   };
