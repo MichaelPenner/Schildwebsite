@@ -1,0 +1,132 @@
+import type { Order } from '../types';
+
+/**
+ * Seed-Bestellungen für die Admin-Ansicht.
+ * Demonstrieren den Workflow von Bestellung bis Abschluss.
+ */
+export const seedOrders: Order[] = [
+  {
+    id: 'order-001',
+    orderNumber: 'SW-M1K8A-X2B4',
+    createdAt: '2026-09-20T14:30:00Z',
+    customer: {
+      id: 'cust-001',
+      email: 'anna.mueller@example.com',
+      billingAddress: {
+        firstName: 'Anna',
+        lastName: 'Müller',
+        street: 'Hauptstraße',
+        houseNumber: '42',
+        zip: '55116',
+        city: 'Mainz',
+        country: 'DE',
+      },
+    },
+    items: [
+      {
+        id: 'item-001',
+        configuration: {
+          id: 'config-001',
+          productId: 'prod-mailbox-sign',
+          productType: 'mailbox-sign',
+          width: 180,
+          height: 45,
+          depth: 3,
+          textLayers: [
+            {
+              id: 'layer-1',
+              text: 'Familie Müller',
+              fontSize: 14,
+              alignment: 'center',
+              letterSpacing: 0.5,
+              colorId: 'col-pla-white',
+            },
+            {
+              id: 'layer-2',
+              text: 'Hauptstraße 42',
+              fontSize: 8,
+              alignment: 'center',
+              letterSpacing: 1,
+              colorId: 'col-pla-gold',
+            },
+          ],
+          materialId: 'mat-pla',
+          baseColorId: 'col-pla-anthracite',
+          fontId: 'font-helvetiker-bold',
+          qrEnabled: false,
+          nfcEnabled: false,
+        },
+        quantity: 1,
+        unitPrice: 3190,
+        totalPrice: 3190,
+        generatedAssets: [],
+      },
+    ],
+    subtotal: 3190,
+    shipping: 490,
+    tax: 699,
+    total: 4379,
+    paymentStatus: 'paid',
+    productionStatus: 'printing',
+    shippingStatus: 'pending',
+  },
+  {
+    id: 'order-002',
+    orderNumber: 'SW-N2L9B-Y3C5',
+    createdAt: '2026-09-22T09:15:00Z',
+    customer: {
+      id: 'cust-002',
+      email: 'max.weber@example.com',
+      billingAddress: {
+        firstName: 'Max',
+        lastName: 'Weber',
+        street: 'Rheinstraße',
+        houseNumber: '7a',
+        zip: '65185',
+        city: 'Wiesbaden',
+        country: 'DE',
+      },
+    },
+    items: [
+      {
+        id: 'item-002',
+        configuration: {
+          id: 'config-002',
+          productId: 'prod-keychain',
+          productType: 'keychain',
+          width: 50,
+          height: 50,
+          depth: 3,
+          textLayers: [
+            {
+              id: 'layer-1',
+              text: 'Max W.',
+              fontSize: 10,
+              alignment: 'center',
+              letterSpacing: 0.5,
+              colorId: 'col-pla-white',
+            },
+          ],
+          materialId: 'mat-pla',
+          baseColorId: 'col-pla-blue',
+          fontId: 'font-helvetiker',
+          qrEnabled: true,
+          qrUrl: 'https://maxweber.de',
+          nfcEnabled: true,
+          nfcUrl: 'https://maxweber.de/kontakt',
+        },
+        quantity: 2,
+        unitPrice: 2190,
+        totalPrice: 4380,
+        generatedAssets: [],
+      },
+    ],
+    subtotal: 4380,
+    shipping: 490,
+    tax: 925,
+    total: 5795,
+    paymentStatus: 'paid',
+    productionStatus: 'paid',
+    shippingStatus: 'pending',
+  },
+];
